@@ -18,7 +18,21 @@ export class Triangle {
     );
   }
 
+  handleErrors() {
+    // if there are values that are negative or 0, throw an error
+    if (this.sidesArray.filter((item, i) => item <= 0).length)
+      throw "All sides must have a size";
+
+    // sort the array from smallest to largest
+    const sortedArray = this.sidesArray.sort((a, b) => a - b);
+    // check if smallest values added are smaller than longest value and throw error
+    if (sortedArray[0] + sortedArray[1] < sortedArray[2]) throw 'The longest side must be shorter than the shortest sides added together'
+  }
+
   kind() {
+    // handle errors before testing
+    this.handleErrors();
+
     // if all sides are the same, its an equilateral triangle
     if (this.side1 === this.side2 && this.side2 === this.side3)
       return "equilateral";
