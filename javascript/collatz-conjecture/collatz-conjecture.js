@@ -6,6 +6,8 @@
 export const steps = n => {
   let steps = 0;
 
+  if (n <= 0) throw "Only positive numbers are allowed";
+
   while (n !== 1) {
     if (n % 2 === 0) {
       n /= 2;
