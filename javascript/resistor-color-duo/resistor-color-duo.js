@@ -1,7 +1,3 @@
-// This is only a SKELETON file for the 'Resistor Color Duo' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export const decodedValue = colors => {
   // get values of colors usings colors passed in
   const color1 = COLORS.find(e => e.color === colors[0]).value;
