@@ -1,24 +1,13 @@
-export const decodedValue = colors => {
-  // get values of colors usings colors passed in
-  const color1 = COLORS.find(e => e.color === colors[0]).value;
-  const color2 = COLORS.find(e => e.color === colors[1]).value;
+import { colorCode } from "../resistor-color/resistor-color.js";
 
-  // concat color values
-  const value = "" + color1 + color2;
+export const decodedValue = colors =>
+  parseInt(
+    colors
+      .map((color, i) => (i < 2 ? colorCode(color) : ""))
+      .toString()
+      .replace(",", "")
+  );
 
-  // return value as a number
-  return Number(value);
-};
-
-export const COLORS = [
-  { color: "black", value: 0 },
-  { color: "brown", value: 1 },
-  { color: "red", value: 2 },
-  { color: "orange", value: 3 },
-  { color: "yellow", value: 4 },
-  { color: "green", value: 5 },
-  { color: "blue", value: 6 },
-  { color: "violet", value: 7 },
-  { color: "grey", value: 8 },
-  { color: "white", value: 9 }
-];
+// the map only returns an index for the first 2 colors (i < 2) and an "" for the rest, 
+// Number() will throw NaN
+// parseInt works because it excludes anything other than number characters
