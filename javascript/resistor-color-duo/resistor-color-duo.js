@@ -2,11 +2,7 @@ import { colorCode } from "../resistor-color/resistor-color.js";
 
 export const decodedValue = colors => {
   const newColors = [];
-
-  for (let i = 0; i < 2; i++) {
-    newColors.push(colorCode(colors[i]));
-  }
-
+  for (let i = 0; i < 2; i++) newColors.push(colorCode(colors[i]));
   return Number(newColors.join(""));
 };
 
