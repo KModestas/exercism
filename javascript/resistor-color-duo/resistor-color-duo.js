@@ -1,12 +1,19 @@
 import { colorCode } from "../resistor-color/resistor-color.js";
 
-// the map only returns an index for the first 2 colors (i < 2) and an "" for the rest,
-// Number() will throw NaN
-// parseInt works because it excludes anything other than number characters
-export const decodedValue = colors =>
-  parseInt(
-    colors
-      .map((color, i) => (i < 2 ? colorCode(color) : ""))
-      .toString()
-      .replace(",", "")
-  );
+export const decodedValue = colors => {
+  const newColors = [];
+
+  for (let i = 0; i < 2; i++) {
+    newColors.push(colorCode(colors[i]));
+  }
+
+  return Number(newColors.join(""));
+};
+
+// es6 version
+// Number(
+//   colors
+//     .map(color => colorCode(color))
+//     .slice(0, 2)
+//     .join("")
+// );
