@@ -3,6 +3,10 @@
 // convenience to get you started writing code faster.
 //
 
-export const gigasecond = () => {
-  throw new Error("Remove this statement and implement this function");
-};
+export const gigasecond = moment => {
+	// get moment in miliseconds and add a gigasecond
+	const gigasecond = moment.getTime() + 1000000000000
+	// convert gigasecond into date
+	const date = new Date(gigasecond)
+	return date
+}
